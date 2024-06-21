@@ -41,7 +41,7 @@ export function Filter(props: IFilterProps) {
   }, [sortBy, order, selectedCategory]);
   const submit = () => {
     getProducts(sortBy, order, selectedCategory);
-    dispatch(setShowFilter(false))
+    dispatch(setShowFilter(false));
   };
   return (
     <div className="p-4 font-lato">
@@ -65,7 +65,7 @@ export function Filter(props: IFilterProps) {
             />
             <div
               onClick={() => setShowSearch(false)}
-              className="absolute top-[5px] right-2 bg-blue-950/20 rounded-lg p-[3px] cursor-pointer"
+              className="absolute top-[5px] right-2 bg-blue-950/10 hover:bg-blue-950/30 transition-all rounded-lg p-[3px] cursor-pointer"
             >
               <IoIosClose size={"1.5rem"} />
             </div>
@@ -118,7 +118,7 @@ export function Filter(props: IFilterProps) {
           })}
         </div>
         {filteredCategories.length == 0 && (
-          <p className="text-[14px] mt-4 text-gray-400 text-center">
+          <p className="text-[14px] mt-4 text-gray-400 text-center font-light">
             No item matches your search term. Try a different word
           </p>
         )}

@@ -37,7 +37,7 @@ export function ProductList(props: IProductListProps) {
         // initial="hidden"
         // animate="visible"
         // exit="hidden"
-        className="mt-4 grid grid-cols-2 gap-x-4 gap-y-6"
+        className="mt-4 grid grid-cols-2 xs:grid-cols-3 sm:grid-cols-4  gap-x-4 gap-y-6"
       >
         {products.map((product: IProduct, i: number) => {
           return <Product key={product.title} product={product} />;

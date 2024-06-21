@@ -16,6 +16,9 @@ const config: Config = {
       fontFamily: {
         lato: "Lato, sans-serif",
       },
+      screens: {
+        xs: "450px",
+      },
     },
   },
   plugins: [],

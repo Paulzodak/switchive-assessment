@@ -5,7 +5,15 @@
 .dim_backdrop {
   background: #a0a0a015; /* I found this color of brightness to work for me better*/
   -webkit-backdrop-filter: brightness(
-    60%
+    40%
   ); /* Add this line first, it fixes brightness for Safari*/
   backdrop-filter: brightness(40%); /* This line activates brightness*/
+}
+
+.dim_backdrop2 {
+  background: #a0a0a015; /* I found this color of brightness to work for me better*/
+  -webkit-backdrop-filter: brightness(
+    95%
+  ); /* Add this line first, it fixes brightness for Safari*/
+  backdrop-filter: brightness(95%); /* This line activates brightness*/
 }

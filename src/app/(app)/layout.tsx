@@ -41,7 +41,7 @@ export default function RootLayout({
             >
               <div
                 onClick={() => dispatch(setShowFilter(false))}
-                className="absolute top-4 right-4 bg-blue-950/30 rounded-lg p-[3px] cursor-pointer"
+                className="absolute top-4 right-4 bg-blue-950/10 hover:bg-blue-950/30 transition-all rounded-lg p-[3px] cursor-pointer"
               >
                 <IoIosClose size={"1.5rem"} />
               </div>
