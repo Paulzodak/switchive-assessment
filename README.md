@@ -1,36 +1,95 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Switchive E-commerce Assessment Project
 
-## Getting Started
+This repository contains an E-commerce web application built with Next.js, Tailwind CSS, Framer Motion, Axios, and Shadcn. The application showcases products retrieved from DummyJSON, and includes features such as product filtering by category, sorting, and searching categories.
 
-First, run the development server:
+## TABLE OF CONTENT
+
+| Table of content |
+| :--------------- |
+| `Features`       |
+| `Technologies`   |
+| `Installation`   |
+| `Usage`          |
+| `Contributing`   |
+| `License`        |
+| `Contact`        |
+
+## Features
+
+- Product Listing: Displays a list of products from the DummyJSON API.
+- Filtering: Filter products by category.
+- Sorting: Sort products by price, rating, and name.
+- Search: Search for products and search for category.
+- Responsive Design: Fully responsive design suitable for all devices.
+- Animations: Smooth animations using Framer Motion for enhanced user experience.
+
+## Tech Stack
+
+- Framework: Next.js
+- Styling: Tailwind CSS
+- Animations: Framer Motion
+- HTTP Requests: Axios
+- Reusable Components: Shadcn
+- Deployment : Vercel
+
+## Installation
+
+#### To run this project
+
+#### Clone the repository:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/Paulzodak/switchive-assessment
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+#### Install dependencies:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+npm install
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+#### Run the development server:
 
-## Learn More
+```
+npm run dev
+```
 
-To learn more about Next.js, take a look at the following resources:
+#### Open your browser and navigate to http://localhost:3000.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+#### You can also access the production server at
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+https://switchive-assessment.vercel.app
 
-## Deploy on Vercel
+## Usage
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Usage
+Once the project is running, you can interact with it as follows:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- Browse Products: View the list of products on the home page.
+- Filter by Category: Use the filter options to view products from specific categories.
+- Sort Products: Use the sort options to arrange products by price, rating, or name and ascending and descending order.
+- Search: Enter keywords in the search bar to find products within selected Category.
+- Utils : Hover on product to see more utility
+- Pagination : Click on see more to see more products
+
+Note: You cannot filter searched products due to API limitations
+
+## Contributing
+
+Contributions are welcome! To contribute:
+
+1. Fork the repository.
+2. Create a new branch: git checkout -b feature/YourFeature.
+3. Commit your changes: git commit -m 'Add some feature'.
+4. Push to the branch: git push origin feature/YourFeature.
+5. Open a pull request.
+
+## License
+
+This project is licensed under the MIT License. [MIT](https://choosealicense.com/licenses/mit/)
+
+## Contact
+
+- Author: Oje Paul Oluwaferanmi
+- Email: ojeoluwaferanmi@gmail.com
+- GitHub: https://github.com/paulZodak
