@@ -4,7 +4,7 @@ import * as React from "react";
 import { CiStar } from "react-icons/ci";
 import { FaEye, FaRegHeart, FaStar } from "react-icons/fa";
 import { AnimatePresence, motion } from "framer-motion";
-import { itemVariants2 } from "@/lib/framerConfig";
+
 import { Button } from "../shadcn/button";
 import { IoHeart } from "react-icons/io5";
 import { MdCompareArrows } from "react-icons/md";
@@ -18,7 +18,6 @@ export function Product({ product }: IProductProps) {
   return (
     <motion.div
       className="h-full  relative"
-      variants={itemVariants2}
       whileHover={{
         scale: 1.05,
         transition: { ease: "easeInOut", duration: 0.4 },
@@ -48,26 +47,26 @@ export function Product({ product }: IProductProps) {
         <AnimatePresence>
           {showDetails && (
             <motion.div
-              initial={{ y: 300 }}
+              initial={{ y: "100%" }}
               exit={{
-                y: 300,
+                y: "100%",
                 transition: { ease: "easeInOut", duration: 0.8 },
               }}
-              animate={{ y: 0, transition: { ease: "easeInOut" } }}
+              animate={{ y: "0%", transition: { ease: "easeInOut" } }}
               className="absolute  backdrop-brightness-50 dim_backdrop   z-10 top-0 left-0 w-full h-full p-2"
             >
               <div className="relative w-full  h-full top-0 left-0 text-xs">
-                <div className="bg-white text-black absolute top-0 left-0 py-1 px-2 font-medium cursor-pointer">
+                <div className="bg-white text-black absolute top-0 left-0 py-2 px-3 font-medium cursor-pointer">
                   SALE!
                 </div>
                 <div className="grid grid-rows-3 gap-2 absolute top-0 right-0">
-                  <div className="bg-white text-black p-[6px] cursor-pointer">
+                  <div className="bg-white text-black p-[10px] cursor-pointer">
                     <FaEye />
                   </div>
-                  <div className="bg-white text-black p-[6px] cursor-pointer">
+                  <div className="bg-white text-black p-[10px] cursor-pointer">
                     <FaRegHeart />
                   </div>
-                  <div className="bg-white text-black p-[6px] cursor-pointer">
+                  <div className="bg-white text-black p-[10px] cursor-pointer">
                     <MdCompareArrows />
                   </div>
                 </div>

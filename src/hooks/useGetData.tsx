@@ -1,4 +1,9 @@
 import {
+  clearAllFilters,
+  selectOrder,
+  selectSearchTerm,
+  selectSelectedCategory,
+  selectSortBy,
   setCategories,
   setProducts,
   setProductsLoading,
@@ -6,12 +11,17 @@ import {
 import { TOrder, TSortBy } from "@/types/types";
 import axios from "axios";
 import * as React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 interface IuseGetDataProps {}
 
 export function useGetData() {
   const dispatch = useDispatch();
+  const searchTerm = useSelector(selectSearchTerm);
+  const [limit, setLimit] = React.useState(10);
+  const order = useSelector(selectOrder);
+  const sortBy = useSelector(selectSortBy);
+  const category = useSelector(selectSelectedCategory);
   //   const [categories, setCategories] = React.useState<string[] | undefined>();
   const getAllCategories = () => {
     axios
@@ -23,27 +33,61 @@ export function useGetData() {
         console.log(err);
       });
   };
-  const getProducts = (
-    sortBy?: TSortBy,
-    order?: TOrder,
-    category?: string | undefined
-  ) => {
+  const getProducts = () => {
+    const url = `https://dummyjson.com/products${
+      category && searchTerm.length == 0 ? `/category/${category}` : ""
+    }?limit=${limit}${
+      sortBy && searchTerm.length == 0 ? `&sortBy=${sortBy}` : ""
+    }${order && searchTerm.length == 0 ? `&order=${order}` : ""}`;
+
+    console.log(url, "url");
+
+    dispatch(setProductsLoading(true));
+
     axios
-      .get(
-        `https://dummyjson.com/products/${
-          category ? `category/${category}` : "category/smartphones"
-        }${sortBy ? `?sortBy=${sortBy}` : ""}${order ? `&&order=${order}` : ""}`
-      )
+      .get(url)
       .then((res) => {
         console.log(res.data);
         dispatch(setProducts(res.data.products));
-        dispatch(setProductsLoading(true));
+        dispatch(setProductsLoading(false));
       })
       .catch((err) => {
         console.log(err);
-        dispatch(setProductsLoading(true));
+        dispatch(setProductsLoading(false));
       });
   };
+  const searchProducts = () => {
+    const url = `https://dummyjson.com/products${
+      searchTerm.length > 0 ? `/search?q=${searchTerm}` : ""
+    }`;
 
-  return { getAllCategories, getProducts };
+    console.log(url, "url");
+
+    dispatch(setProductsLoading(true));
+
+    axios
+      .get(url)
+      .then((res) => {
+        console.log(res.data);
+        dispatch(setProducts(res.data.products));
+        dispatch(setProductsLoading(false));
+      })
+      .catch((err) => {
+        console.log(err);
+        dispatch(setProductsLoading(false));
+      });
+  };
+  React.useEffect(() => {
+    getProducts();
+  }, [limit]);
+
+  React.useEffect(() => {
+    if (searchTerm.length > 0) {
+      dispatch(clearAllFilters());
+    }
+    searchProducts();
+  }, [searchTerm]);
+  const viewmore = () => limit < 200 && setLimit(limit + 10);
+
+  return { getAllCategories, getProducts, viewmore };
 }

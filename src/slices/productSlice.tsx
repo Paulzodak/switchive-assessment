@@ -9,6 +9,7 @@ export interface IProductState {
   order: TOrder | undefined;
   sortBy: TSortBy | undefined;
   productsLoading: boolean;
+  searchTerm: string;
 }
 
 const initialState: IProductState = {
@@ -18,6 +19,7 @@ const initialState: IProductState = {
   order: undefined,
   sortBy: undefined,
   productsLoading: false,
+  searchTerm: "",
 };
 
 const productSlice: any = createSlice({
@@ -40,6 +42,9 @@ const productSlice: any = createSlice({
     setSortBy: (state: IProductState, action) => {
       state.sortBy = action.payload;
     },
+    setSearchTerm: (state: IProductState, action) => {
+      state.searchTerm = action.payload;
+    },
     setSelectedCategory: (state: IProductState, action) => {
       state.selectedCategory = action.payload;
     },
@@ -59,12 +64,16 @@ export const {
   setSelectedCategory,
   clearAllFilters,
   setProductsLoading,
+  setSearchTerm,
 } = productSlice.actions;
 export const selectProducts = (state: IRootState) => state.product.products;
+export const selectSearchTerm = (state: IRootState) => state.product.searchTerm;
 export const selectCategories = (state: IRootState) => state.product.categories;
 export const selectSelectedCategory = (state: IRootState) =>
   state.product.selectedCategory;
 export const selectOrder = (state: IRootState) => state.product.order;
+export const selectProductLoading = (state: IRootState) =>
+  state.product.productsLoading;
 export const selectSortBy = (state: IRootState) => state.product.sortBy;
 
 export default productSlice.reducer;

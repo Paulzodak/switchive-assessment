@@ -2,6 +2,7 @@ import {
   selectCategories,
   selectOrder,
   selectProducts,
+  setSearchTerm as setTerm,
   selectSelectedCategory,
   selectSortBy,
   setOrder,
@@ -17,9 +18,12 @@ import { IoIosClose } from "react-icons/io";
 import { useGetData } from "@/hooks/useGetData";
 import { Button } from "../shadcn/button";
 import { setShowFilter } from "@/slices/navSlice";
-interface IFilterProps {}
+interface IFilterProps {
+  className?: string;
+}
 
-export function Filter(props: IFilterProps) {
+export function Filter({ className }: IFilterProps) {
+  // const searchTer = useSelector(selectSearchTerm);
   const dispatch = useDispatch();
   const { getAllCategories, getProducts } = useGetData();
   const selectedCategory = useSelector(selectSelectedCategory);
@@ -37,14 +41,15 @@ export function Filter(props: IFilterProps) {
     : categories;
 
   React.useEffect(() => {
-    getProducts(sortBy, order, selectedCategory);
+    getProducts();
+    dispatch(setTerm(""));
   }, [sortBy, order, selectedCategory]);
   const submit = () => {
-    getProducts(sortBy, order, selectedCategory);
+    getProducts();
     dispatch(setShowFilter(false));
   };
   return (
-    <div className="p-4 font-lato">
+    <div className={`p-4 font-lato ${className}`}>
       <div className="mt-8">
         <div className="flex items-center justify-between">
           <h1 className="font-semibold">CATEGORY</h1>
